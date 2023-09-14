@@ -1,0 +1,611 @@
+﻿<html>
+   <head><title>draway</title>
+   <link href="css/StyleApp.css" rel="stylesheet" type="text/css">
+  
+   </head>
+    <body style="font-size:18px;" onload="nome();">
+     <script>!function(d,l,e,s,c){e=d.createElement("script");e.src="//ad.altervista.org/js.ad/size=2X2/?ref="+encodeURIComponent(l.hostname+l.pathname)+"&r="+Date.now();s=d.scripts;c=s[s.length-1];c.parentNode.insertBefore(e,c)}(document,location)</script>
+      
+      <br>
+      <canvas onmousemove="posCurs();" id="canvas"  style="border-color:black; background-color: white; position:fixed;top: 0;left:0;">
+         Browser non sopporta il canvas</canvas>
+      <br>
+      
+      
+      
+      
+         <div class="logo"><img src="img/logo-draway-nero.PNG" height=70px; width=150px;></div><br>
+         
+         <div class="barraStr">
+         
+            <button  onclick="strumento(1);" id="mat"><img alt="Matita" src="img/matita.png" ></button><br>
+         
+            <button onclick="strumento(2);" id="linea" alt="" ><img src="img/linea.png" ></button><br>
+         
+            <button onclick="strumento(3);" id="rett"><img src="img/rett.png" ></button><br>
+         
+            <button onclick="strumento(4);" ><img src="img/cerchio.png" ></button><br>
+            
+            <button onclick="strumento(7);"><img src="img/poly.png"></button><br>
+         
+            <button onclick="strumento(5);" ><img src="img/text.png" ></button><br>
+
+            <button onclick="strumento(6);"><img src="img/gomma.png" ></button><br>
+         </div>  
+         <div class="titolo">
+            <label id="nome">Nome lavoro</label> <button onclick="nome();" alt="" ><img src="img/rin.png" ></button>
+            </div>
+           <div class="save">
+            
+            <a id="salva"><button onclick="salva();" alt="" id="salvabtn"><img src="img/salva.png"></button></a>
+            <button onclick="ConfermaOperazione();" alt=""><img src="img/cestino.png" ></button>
+           </div>
+         </div>
+         <br>
+         <div id='div'></div>
+         <div class="costum">
+            <div><div id="pxspess" style="">Spessore: 5px</div><br>
+            <input id="spessore" type="range" min="1" max="100" value="5">
+             </div>
+             
+            <div>
+           <div>Colore 1 <button id="bordo" onclick="sel('bordo');" style="background-color: black;"></button><br></div> <br>
+              <div>Colore 2 <button id="fill" onclick="sel('riempimento');"></button></div></div>
+            <div class="colors">
+            <button onclick="btnColor('blue');" alt="blu" style="background-color: blue;"></button>
+            <button onclick="btnColor('dodgerblue');" alt="" style="background-color: dodgerblue;"></button>
+            <button onclick="btnColor('lightskyblue');" alt="" style="background-color: lightskyblue;"></button>
+            <button onclick="btnColor('red');" alt="" style="background-color: red;"></button>
+            <button onclick="btnColor('orange');" alt="" style="background-color: orange;"></button>
+            <button onclick="btnColor('orangered');" alt="" style="background-color: orangered;"></button>
+            
+            <button onclick="btnColor('yellow');" alt="" style="background-color: yellow;"></button>
+            
+            <br>
+            <button onclick="btnColor('orange');" alt="" style="background-color: orange;"></button>
+            <button onclick="btnColor('brown');" alt="" style="background-color: brown;"></button>
+            <button onclick="btnColor('orange');" alt="" style="background-color: orange;"></button>
+            <button onclick="btnColor('aqua');" alt="" style="background-color: aqua;"></button>
+            <button onclick="btnColor('purple');" alt="" style="background-color: purple;"></button>
+            <button onclick="btnColor('olive');" alt="" style="background-color: olive;"></button>
+            
+            <button onclick="btnColor('green');" alt="" style="background-color: green;"></button>
+            <br>
+            
+            <button onclick="btnColor('violet');" alt="" style="background-color: violet;"></button>
+            <button onclick="btnColor('mistyrose');" alt="" style="background-color: mistyrose;"></button>
+           <button onclick="btnColor('white');" alt="" style="background-color: white;"></button>
+            <button onclick="btnColor('grey');" alt="" style="background-color: grey;"></button>
+            <button onclick="btnColor('silver');" alt="" style="background-color: silver;"></button>
+           <button onclick="btnColor('black');" alt="" style="background-color: black;"></button>
+            
+            <button onclick="btnColor('rgba(0,0,0,0)');" alt="" style="background-image: url('img/croce.png'); background-size: contain;"></button>
+           
+            </div>
+            <div style="margin-left: 10px;">
+            Font-size<input type="number" id="fontSize" class="font" value=60><br>
+            Font<select id="font" class="font">
+               <option style="font-family: Times New Roman;">Times New Roman</option>
+               <option style="font-family: Georgia;">Georgia</option>
+               <option style="font-family: Arial;">Arial</option>
+               
+               <option style="font-family: Lucida;">Lucida</option>
+               <option style="font-family: Verdana;">Verdana</option>
+              
+               <option style="font-family: Courier;">Courier</option>
+               
+            </select>
+          
+               
+               
+            </select>
+            </div>
+         </div>
+      
+      <div class="footer">
+         
+         
+      <div id="x" ></div><div id="y"></div>
+      
+      <div class="istruzioni" id="istruzioni">Seleziona uno strumento di creazione</div></div>
+      
+      <script type="text/javascript">
+document.getElementById("spessore").addEventListener('mousemove', numSpess);
+
+function numSpess(){document.getElementById('pxspess').innerHTML="Spessore: "+document.getElementById("spessore").value+"px";}
+
+  //VARIABILI GLOBALI UTILI
+  
+  
+   var puntoinizio;
+   var titolo;
+   var v="bordo";
+   var colore="black";
+   var coloreFill="rgba(0,0,0,0)";
+   var pos = { x: 0, y: 0 };
+  
+  
+  
+  //FUNZIONE RESET
+  var frase="";
+  function sceltaFrase(){
+    var nrandom=1;
+    
+    nrandom=Math.round(4*Math.random());
+
+   
+    
+    switch(nrandom){
+      case 0: frase=" Dai non farlo, sembra carino.."; break;
+      case 1: frase=" Fai bene..";break;
+      case 2: frase=" Pensa che questo disegno non lo rivedrai, ne sentirai la mancanza..";break;
+      case 3: frase=" Wow, che gran perdita..";break;
+      case 4: frase=" Stai negando un capolavoro all'uomo. Non farlo."; 
+    } }
+  
+  function ConfermaOperazione() {
+ 
+   
+sceltaFrase();
+ 
+    var reset = window.confirm("Vuoi davvero cancellare il disegno?"+frase);
+    
+   if(reset){
+      window.location.reload();
+   } 
+  }
+ 
+//FUNZIONE NOME
+
+
+function nome(){
+
+   titolo=prompt("Dai un nome al tuo lavoro");
+   if(titolo===null || titolo===""){
+      titolo="Lavoro01";
+   }
+   
+   document.getElementById("nome").innerHTML=titolo;
+}
+
+
+
+
+//CANVAS
+
+
+
+
+var canvas = document.getElementById('canvas');
+canvas.width = document.body.clientWidth;
+var h=document.body.clientHeight-150;
+    canvas.height = h;
+    canvasW = canvas.width;
+    canvasH = canvas.height;
+
+var ctx = canvas.getContext('2d');
+
+canvas.addEventListener('mousemove', posCurs);
+
+ctx.beginPath();
+ctx.fillStyle="white";
+ctx.fillRect(0,0,window.innerWidth, window.innerHeight);
+ctx.closePath();
+
+//FUNZIONE PER LA POSIZIONE DEL MOUSE
+
+
+
+function setPosition(e) {
+   
+  pos.x = e.clientX;
+  pos.y = e.clientY;
+  
+}
+
+function posCurs(e){
+   setPosition(e);
+   document.getElementById("x").innerHTML="x: "+pos.x;
+   document.getElementById("y").innerHTML="y: "+pos.y;
+}
+document.addEventListener('mousedown', setPosition);
+document.addEventListener('mouseenter', setPosition);
+
+
+
+//FUNZIONI PER LA COLORAZIONE
+
+
+
+function sel(flag){
+   if(flag=="bordo"){
+      v="bordo";
+   }else
+   v="riempimento";
+}
+function btnColor(c){
+   if(v=="bordo"){
+     colore=c;
+     document.getElementById("bordo").style="background-color:"+c+";";
+   }else{
+      if(v=="riempimento"){
+     coloreFill=c;
+     document.getElementById("fill").style="background-color:"+c+";";
+      
+   }
+   }}
+ 
+   
+   
+//FUNZIONE GOMMA
+   
+ 
+   
+//function gomma(){}
+function cancella(e) {
+  if (e.buttons !== 1) return;
+
+  ctx.beginPath();
+
+  ctx.lineWidth = document.getElementById("spessore").value;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = 'white';
+
+  ctx.moveTo(pos.x, pos.y);
+  setPosition(e);
+  ctx.lineTo(pos.x, pos.y);
+
+  ctx.stroke();
+  ctx.closePath();
+ 
+}
+
+function gomma(){
+   document.getElementById("istruzioni").innerHTML="Hai selezionato lo strumento 'GOMMA': cancella tenendo premuto il tasto sinistro del mouse.";
+   document.addEventListener('mousemove',cancella, true);
+
+}
+
+
+//function clearListeners
+
+
+
+//FUNZIONE MATITA
+
+function draw(e) {
+  if (e.buttons !== 1) return;
+
+  ctx.beginPath();
+
+  ctx.lineWidth = document.getElementById("spessore").value;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = colore;
+
+  ctx.moveTo(pos.x, pos.y);
+  setPosition(e);
+  ctx.lineTo(pos.x, pos.y);
+
+  ctx.stroke();
+  ctx.closePath();
+ 
+}
+
+function matita(){
+   document.getElementById("istruzioni").innerHTML="Hai selezionato lo strumento 'MATITA': disegna tenendo premuto il tasto sinistro del mouse.";
+   document.addEventListener('mousemove', draw, true);
+
+}
+
+
+
+
+
+
+//FUNZIONE PER RETTANGOLO
+
+
+
+ function disegnaRettangolo(e){
+     
+      
+       if (puntoinizio===undefined){
+         
+         puntoinizio = {x:e.clientX, y:e.clientY};
+        
+         
+         document.getElementById("istruzioni").innerHTML="Ora clicca in un punto sullo schermo per stabilire il vertice (C) del rettangolo, ovvero il vertice opposto ad A, per stabilire la lunghezza della diagonale della figura.";
+       }else{
+         
+         var puntofinale={x:e.clientX, y:e.clientY};
+   var altezza=puntofinale.y-puntoinizio.y;
+   var base=puntofinale.x-puntoinizio.x;
+   
+   
+   ctx.beginPath();
+   ctx.lineWidth = document.getElementById("spessore").value;
+   ctx.strokeStyle = colore;
+   ctx.fillStyle=coloreFill;
+   ctx.rect(puntoinizio.x, puntoinizio.y, base, altezza);
+   ctx.fillRect(puntoinizio.x, puntoinizio.y, base, altezza);
+   ctx.stroke();
+   ctx.closePath();
+   puntoinizio=undefined;
+   document.getElementById("istruzioni").innerHTML="Hai selezionato lo strumento 'DISEGNA RETTANGOLO': clicca in un punto sullo schermo per stabilire il vertice iniziale (A) del rettangolo.";
+  
+   }
+  
+}
+
+function rettangolo(){
+   
+ document.getElementById("istruzioni").innerHTML="Hai selezionato lo strumento 'DISEGNA RETTANGOLO': clicca in un punto sullo schermo per stabilire il vertice iniziale (A) del rettangolo.";
+  canvas.addEventListener('click', disegnaRettangolo);
+   
+  
+   
+}
+
+
+
+
+//FUNZIONE PER RETTA
+
+ function disegnaRetta(e){
+     
+      
+       if (puntoinizio===undefined){
+         
+         puntoinizio = {x:e.clientX, y:e.clientY};
+         ctx.beginPath("punto");
+         
+         ctx.strokeStyle= colore;
+         ctx.lineWidth= "5px";
+         ctx.lineCap="round";
+         ctx.moveTo(puntoinizio.x, puntoinizio.y);
+         ctx.lineTo(puntoinizio.x, puntoinizio.y);
+         ctx.stroke();
+         ctx.closePath("punto");
+         document.getElementById("istruzioni").innerHTML="Ora clicca sullo schermo dove vuoi stabilire il punto finale del segmento.";
+       }else{
+         var puntofinale={x:e.clientX, y:e.clientY};
+ctx.beginPath("punto");
+ctx.strokeStyle= 'blue';
+ctx.closePath("punto");
+   
+   ctx.beginPath();
+   ctx.lineWidth = document.getElementById("spessore").value;
+   ctx.strokeStyle = colore;
+   ctx.moveTo(puntoinizio.x, puntoinizio.y);
+   ctx.lineTo(puntofinale.x, puntofinale.y);
+   ctx.stroke();
+   ctx.closePath();
+   puntoinizio=undefined;
+   document.getElementById("istruzioni").innerHTML="Hai selezionato lo strumento 'DISEGNA SEGMENTO': clicca sullo schermo dove vuoi stabilire il punto iniziale del segmento.";
+   
+   }
+}
+
+
+
+function retta(){
+ document.getElementById("istruzioni").innerHTML="Hai selezionato lo strumento 'DISEGNA SEGMENTO': clicca sullo schermo dove vuoi stabilire il punto iniziale del segmento.";
+ canvas.addEventListener('click', disegnaRetta);
+   
+  
+
+}
+
+
+
+
+//FUNZIONE PER LA CIRCONFERENZA
+
+
+ 
+   function disegnaCirconferenza(e){
+     
+      
+       if (puntoinizio===undefined){
+         
+         puntoinizio = {x:e.clientX, y:e.clientY};
+        
+         document.getElementById("istruzioni").innerHTML="Ora clicca sullo schermo per stabilire la lunghezza del raggio della circonferenza";
+       }else{
+      
+         var puntofinale={x:e.clientX, y:e.clientY};
+   var r=Math.sqrt(Math.pow(puntofinale.x-puntoinizio.x, 2)+Math.pow(puntofinale.y-puntoinizio.y, 2));
+
+
+ctx.beginPath();
+ctx.arc(puntoinizio.x,puntoinizio.y,r,0,Math.PI*2,false);
+ctx.lineWidth= document.getElementById("spessore").value;
+ctx.fillStyle=coloreFill;
+ctx.strokeStyle = colore;
+ctx.stroke();
+ctx.fill();
+ctx.closePath();
+   puntoinizio=undefined;
+   document.getElementById("istruzioni").innerHTML="Hai selezionato lo strumento 'DISEGNA CIRCONFERENZA': clicca sullo schermo dove vuoi stabilire il centro della circonferenza.";
+   
+   }
+}
+
+function cerchio(){
+   
+   document.getElementById("istruzioni").innerHTML="Hai selezionato lo strumento 'DISEGNA CIRCONFERENZA': clicca sullo schermo dove vuoi stabilire il centro della circonferenza.";
+   canvas.addEventListener('click', disegnaCirconferenza);
+  
+}
+
+//disegna poligono
+
+function disegnaPoligono(e){
+     
+      
+       if (puntoinizio===undefined){
+         
+         puntoinizio = {x:e.clientX, y:e.clientY};
+         
+         document.getElementById("istruzioni").innerHTML="Ora clicca sullo schermo dove vuoi stabilire il punto finale del segmento.";
+       }else{
+         var puntofinale={x:e.clientX, y:e.clientY};
+
+   
+   ctx.beginPath();
+   ctx.lineWidth = document.getElementById("spessore").value;
+   ctx.strokeStyle = colore;
+   ctx.moveTo(puntoinizio.x, puntoinizio.y);
+   ctx.lineTo(puntofinale.x, puntofinale.y);
+   ctx.stroke();
+   ctx.closePath();
+   puntoinizio=puntofinale;
+   document.getElementById("istruzioni").innerHTML="Premi il pulsante 'invio' della tastiera per terminare di disegnare.";
+   
+   }
+}
+
+
+
+function poligono(){
+ document.getElementById("istruzioni").innerHTML="Hai selezionato lo strumento 'DISEGNA POLIGONO': clicca sullo schermo dove vuoi stabilire il punto iniziale del segmento.";
+ canvas.addEventListener('click', disegnaPoligono);
+ document.addEventListener('keypress', function(e){
+   var charCode = e.which;
+    if (charCode==13) {canvas.removeEventListener('click', disegnaPoligono); puntoinizio=undefined; document.getElementById("istruzioni").innerHTML="Seleziona uno strumento di creazione";}});
+    
+
+  
+
+}
+
+
+//FUNZIONE PER TESTO
+
+function scrivi(e){
+  
+    var puntoinizio = {x:e.clientX, y:e.clientY};
+    var text=prompt("Inserisci testo");
+    if(text===null){text="";}
+    ctx.beginPath();
+    ctx.font=document.getElementById('fontSize').value+"px "+document.getElementById('font').value+"";
+    
+    ctx.fillStyle=colore;
+    ctx.fillText(text, puntoinizio.x, puntoinizio.y);
+    
+    ctx.closePath();
+}
+
+function testo(){
+  
+    document.getElementById("istruzioni").innerHTML="Hai selezionato lo strumento 'TESTO': clicca sullo schermo dove vuoi scrivere";
+   canvas.addEventListener('click', scrivi);
+}
+
+
+function strumento(n){
+
+   switch(n){
+      case 1:
+         puntoinizio=undefined;
+      canvas.removeEventListener('click',disegnaCirconferenza);
+      canvas.removeEventListener('click', scrivi);
+      canvas.removeEventListener('click',disegnaRetta);
+      canvas.removeEventListener('click',disegnaRettangolo);
+      document.removeEventListener('mousemove',cancella, true);
+      canvas.removeEventListener('click', disegnaPoligono);
+      
+      matita(); 
+      
+      break;
+      case 2:
+         puntoinizio=undefined;
+         canvas.removeEventListener('click',disegnaCirconferenza);
+         canvas.removeEventListener('click',disegnaRettangolo);
+        document.removeEventListener('mousemove', draw, true);
+        document.removeEventListener('mousemove',cancella, true);
+        canvas.removeEventListener('click', scrivi);
+        canvas.removeEventListener('click', disegnaPoligono);
+      retta();
+      break;
+   
+      case 3:
+         puntoinizio=undefined;
+      canvas.removeEventListener('click',disegnaCirconferenza);
+         canvas.removeEventListener('click',disegnaRetta);
+         document.removeEventListener('mousemove', draw, true);
+         document.removeEventListener('mousemove',cancella, true);
+         canvas.removeEventListener('click', scrivi);
+         canvas.removeEventListener('click', disegnaPoligono);
+         rettangolo();
+      break;
+      case 4:
+         puntoinizio=undefined;
+      canvas.removeEventListener('click',disegnaRetta);
+         canvas.removeEventListener('click',disegnaRettangolo);
+         document.removeEventListener('mousemove', draw, true);
+          document.removeEventListener('mousemove',cancella, true);
+          canvas.removeEventListener('click', scrivi);
+          canvas.removeEventListener('click', disegnaPoligono);
+         cerchio();
+         break;
+       case 5:
+         puntoinizio=undefined;
+      canvas.removeEventListener('click',disegnaRetta);
+         canvas.removeEventListener('click',disegnaRettangolo);
+         document.removeEventListener('mousemove', draw, true);
+          document.removeEventListener('mousemove',cancella, true);
+           canvas.removeEventListener('click',disegnaCirconferenza);
+           canvas.removeEventListener('click', disegnaPoligono);
+         testo();
+         break;
+      case 6:
+         puntoinizio=undefined;
+         canvas.removeEventListener('click',disegnaCirconferenza);
+          canvas.removeEventListener('click',disegnaRetta);
+         canvas.removeEventListener('click',disegnaRettangolo);
+         document.removeEventListener('mousemove', draw, true);
+         canvas.removeEventListener('click', scrivi);
+         canvas.removeEventListener('click', disegnaPoligono);
+         gomma();
+      break;
+   case 7:
+      puntoinizio=undefined;
+      canvas.removeEventListener('click',disegnaCirconferenza);
+          canvas.removeEventListener('click',disegnaRetta);
+         canvas.removeEventListener('click',disegnaRettangolo);
+         document.removeEventListener('mousemove', draw, true);
+         canvas.removeEventListener('click', scrivi);
+         document.removeEventListener('mousemove',cancella, true);
+   poligono();
+      
+   }
+   
+   
+   
+   
+}
+
+//FUNZIONE PER IL SALVATAGGIO
+
+
+
+
+function salva(){
+   var link = document.getElementById('salva');
+  
+    
+   link.addEventListener('click', function(ev) {
+    link.href = canvas.toDataURL();
+    link.download = titolo+".png";
+}, false);
+   
+
+}
+
+
+ 
+    </script>
+      
+    </body>
+    </html>

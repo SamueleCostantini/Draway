@@ -1,0 +1,125 @@
+
+body{
+   
+    background: url('sfondo.jpg') no-repeat center center fixed;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     
+}
+.navbar{
+    top: 0;
+    
+    
+    border-radius: 3px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    
+    height: auto;
+    text-align: center;
+    
+}
+.navbar a{
+    text-decoration: none;
+    color: green;
+    padding-right: 5%;
+    padding-left: 5%;
+    font-size: 25px;
+}
+
+
+
+.container{
+    border-radius: 3px;
+    width: 100%;
+    background-color: white;
+    margin: 0px;
+    color: black;
+    height: auto;
+    text-align: justify;
+    
+}
+.par-intr{
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    width: 50%;
+    padding-right: 25%;
+    padding-left: 25%;
+    background-color: white;
+    color: blue;
+    box-shadow: 0px 0px 10px black;
+    
+}
+.container img {
+    width: 95%;
+    height: auto;
+    border-radius: 4;
+    
+    
+}
+.in-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 50%;
+    height: 1500px;
+    margin-right: 25%;
+    margin-left: 25%;
+    background-color: rgba(128, 112, 26, 0.9);
+    border-right-style: solid;
+    border-left-style: solid; 
+    border-color: black;
+}
+.barra-titolo{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    text-decoration-style: solid;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-size: 100px;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    
+}
+.barra-titolo text {
+        margin-top: 100px;
+        margin-bottom: 100px;
+}
+.sinistra{
+    float: left;
+    width: 38%;
+    padding: 5px;
+}
+.destra{
+    float: right;
+    width: 58%;
+    padding: 5px;
+    margin-right: 3px;
+}
+.footer{
+    bottom: 0;
+    
+    
+    border-radius: 3px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    
+    height: auto;
+    
+}
+.autore{
+    position: left;
+}
+.social{
+    position: absolute;
+    right: 2; 
+}

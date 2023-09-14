@@ -1,0 +1,164 @@
+@font-face {
+    font-family: 'Playball';
+    
+    src: url('Playball.ttf') format('ttf');
+ }
+body{
+   
+    background: url('sfondo.jpg') no-repeat center center fixed;
+    color: white;
+    background-size: 100%;
+       
+    
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     
+}
+button {
+   
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    color: white;
+    border-color: white;
+
+}
+button:hover{
+    color: white;
+    background-color: green;
+
+}
+.navbar{
+    top: 0;
+    position: absolute;
+    right: 0;
+    left: 0;
+    
+    
+    width:100%;
+    left: 0;
+    right: 0;
+    
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    
+    height: auto;
+    text-align: center;
+    
+}
+.navbar a{
+    text-decoration: none;
+    color: green;
+    padding-right: 5%;
+    padding-left: 5%;
+    font-size: 25px;
+}
+.galleria {
+    width: 30%; float: left; height: 1500px; border-left: solid grey; border-left-width: 2px; scroll-padding-bottom: 1000px;
+}
+.galleria img{
+    float: left; width: 90%; height: auto; border-radius: 5px; margin-top: 20px; margin-left: 12%; margin-right: auto;
+}
+
+.container{
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    
+    width: 100%;
+    background-color: white;
+    margin: 0px;
+    color: black;
+    height: auto;
+    text-align: justify;
+    
+    
+}
+.par-intr{
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    width: 60%;
+    padding-right: auto;
+    padding-left: auto;
+    background-color: olive;
+    color: white;
+    box-shadow: 0px 0px 10px black;
+    
+}
+.container img {
+    width: 95%;
+    height: auto;
+    border-radius: 4;
+    
+    
+}
+.in-container{
+   
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    height: 1500px;
+    /*margin-right: 25%;
+    margin-left: 25%;
+  
+    /*border-right-style: solid;
+    border-left-style: solid; 
+    border-color: black;*/
+}
+.barra-titolo{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    text-decoration-style: solid;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-size: 100px;
+    margin-top: 200px;
+    margin-bottom: 150px;;
+    
+}
+.barra-titolo text {
+        margin-top: 100px;
+        margin-bottom: 100px;
+}
+.sinistra{
+    float: left;
+    width: 38%;
+    padding: 5px;
+}
+.destra{
+    float: right;
+    width: 58%;
+    padding: 5px;
+    margin-right: 3px;
+}
+.footer{
+    bottom: 0;
+    margin-top: 20px;
+    
+    border-radius: 3px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
+    
+    height: 30px;
+    
+}
+.footer img{
+    margin: 5px;
+}
+.autore{
+    position: left;
+}
+.social{
+    position: absolute;
+    right: 2; 
+}

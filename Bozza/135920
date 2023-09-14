@@ -1,0 +1,48 @@
+<html>
+    <head>
+
+        <title>Bozza</title>
+        <link href="Style.css" rel="stylesheet">
+    </head>
+    <body>
+            <div class="navbar" role="navigation">
+                    <a href=""><img src="senzanome.png"></a>
+                    <a href="">HOME</a>
+                    <a href="">CHI SIAMO</a>
+                    <a href="">COSA FACCIAMO</a>
+                    <a href="">CONTATTI</a>
+                
+            </div>
+            <div class="barra-titolo">
+                TITOLO
+                </div> 
+        <div class="container">
+            
+            <p class="par-intr">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                 </p>   
+                
+                 <div class="in-container">
+                     <div class="sinistra">
+            <img class="img-did"src="trattore1.png">
+            </div>
+            <div class="destra">
+                <p> 
+                <h4>
+                    Titolo
+                </h4>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+                </p>
+            </div>
+            
+</div>
+        </div>
+
+        <div class="footer">
+            <div class="autore">Samuele Costantini</div>
+            
+        </div>
+    </body>
+</html>

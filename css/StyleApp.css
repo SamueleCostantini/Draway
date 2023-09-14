@@ -1,0 +1,144 @@
+body{
+     color: white;
+     font-family: verdana;
+}
+body div{
+     border-radius: 5px;
+     background-color: rgba(0,0,0,1);
+}
+button {
+     
+     cursor: pointer;
+     border: none;
+      border-radius: 5px;
+      background: white;
+     
+}
+
+
+canvas{
+    cursor:crosshair;
+}
+.font{
+     margin: 10px;
+     border-radius: 5px;
+}
+#fontSize{
+     width: 40px;
+}
+#spessore{
+     width: 100px;
+     margin-left:20px;
+     
+}
+.logo{
+    width: 150px;
+    height: 70px;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    padding-left: 5pX;
+    padding-right: 5pX;
+    
+    }
+.barraStr{
+    position: fixed;
+    top: 80px;
+    left: 5px;
+
+    width: auto;
+    height: auto;
+    
+}
+.barraStr button{
+    margin: 5px;
+    background-color: rgba(255,255,255,1);
+    
+}
+.barraStr img{
+     width: 30px;
+     height: 30px;
+     
+}
+.titolo{
+    position: fixed;
+     top: 5px;
+     right: 5px;
+     padding: 5px;
+     margin-bottom: 5px;
+    
+}
+.titolo img{
+     height: 20px;
+     width: 15px;
+     
+}
+.titolo button{
+    margin-top: 2px;
+}
+.titolo button{
+     height: auto;
+     width: auto;
+}
+.costum button{
+     border: solid 1px;;
+     border-color: white;
+}
+.save{
+     position: fixed;
+     top: 50px;
+     right: 5px;
+     padding: 5px;
+     
+}
+#salvabtn{
+     background-color: white;
+     border-radius: 5px;
+     width: auto;
+     height: auto;
+     margin: 0;
+}
+.save img{
+     width: 30px;
+     height: 30px;
+}
+.costum{
+     padding-top: 10px;
+    position: fixed;
+     bottom: 60px;
+      width: 99%;
+      
+}
+.costum div{
+     float: left;
+     padding-left: 20px;
+     padding-bottom: 5px;
+     
+     color: white;
+     background: none;
+}
+.costum button{
+      width: 20px;
+      height: 20px;
+}
+.istruzioni{
+      border: solid;
+     border-color: white;
+     border-radius: 5px;
+     margin: 30px;
+}
+.footer{
+     width: 99%;
+     height: 50px;
+     position: fixed;
+     bottom: 5px;
+}
+.footer div{
+     background: none;
+     float: left;
+     margin: 10px;
+    
+}
+#bordo{
+     margin-bottom: 20px;
+}
